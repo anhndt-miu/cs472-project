@@ -4,6 +4,7 @@ import TrendingComponent from './components/TrendingComponent.js'
 import SearchComponent from './components/SearchComponent.js'
 import SearchResultComponent from './components/SearchResultComponent.js'
 import { useState } from 'react';
+import FooterComponent from './components/FooterComponent.js';
 
 function App() {
   const [searchData, updateSearchData] = useState(null)
@@ -31,9 +32,10 @@ function App() {
     <div className="app">
       <SearchComponent isDisabled={isDisabled} handleSearch={handleSearch} />
       <div className='content-container'>
-        <div className='column left'><SearchResultComponent data={searchData} /></div>
-        <div className='column right'><TrendingComponent /></div>
+        <div className='column-left'><SearchResultComponent data={searchData} /></div>
+        <div className='column-right'><TrendingComponent /></div>
       </div>
+      <FooterComponent/>
     </div>
   );
 }

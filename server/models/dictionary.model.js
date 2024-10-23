@@ -12,7 +12,7 @@ mongoose.connect(process.env.MONGO_URI, {
 
 const dictionarySchema = new mongoose.Schema({
     word: { type: String, required: true },
-    wordtype: { type: String, required: true },
+    wordtype: { type: String },
     definition: { type: String, required: true }
 }, { timestamps: true });
 

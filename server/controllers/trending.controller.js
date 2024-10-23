@@ -7,7 +7,7 @@ dotenv.config();
 const trendingController = {
     getTrending: async (req, res) => {
         try {
-            const data = await Trending.find().sort({counter:-1}).limit(process.env.LIMIT_PER_RQ)
+            const data = await Trending.find().sort({ counter: -1, updatedAt: -1 , createdAt: -1}).limit(process.env.LIMIT_PER_RQ)
             if (!data) {
                 return res.status(400).json({ msg: 'Not found' })
             }

@@ -4,23 +4,27 @@ function TrendingComponent({ }) {
 
     const [data, setData] = useState(null);
     const [counter, setCounter] = useState(25);
+    // const [triggerFetchData, setTriggerFetchData] = useState(0);
 
     useEffect(() => {
+        fetchTrendingData()
         const interval = setInterval(() => {
-            setCounter((prevCounter) => (prevCounter > 0 ? prevCounter - 1 : 25));
+            setCounter((prevCounter) => {
+                if (prevCounter > 0) {
+                    return prevCounter - 1
+                } else {
+                    fetchTrendingData()
+                    return prevCounter = 25
+                }
+            });
         }, 1000);
 
         return () => clearInterval(interval);
     }, []);
 
-    useEffect(() => {
-        fetchTrendingData();
-        const interval = setInterval(() => {
-            fetchTrendingData();
-        }, 25000);
-
-        return () => clearInterval(interval);
-    }, []);
+    // useEffect(() => {
+    //     fetchTrendingData();
+    // }, [triggerFetchData]);
 
     const fetchTrendingData = async () => {
         try {
@@ -38,14 +42,14 @@ function TrendingComponent({ }) {
 
 
     return (
-        <div>
+        <div className='trending-container'>
             <h1>Popular searches</h1>
-            <p>Next refresh {counter}</p>
+            <p className='trending-hint'>Auto refresh after {counter} second(s)</p>
             {(!data || data.length === 0) ? null : (
-                <div className='trending-container'>
+                <div >
                     <table>
                         <thead>
-                            <tr>
+                            <tr className='trending-header'>
                                 <th></th>
                                 <th>Word</th>
                                 <th>Times</th>
