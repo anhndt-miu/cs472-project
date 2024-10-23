@@ -6,6 +6,9 @@ function TrendingComponent({ }) {
     const [isFetching, setFetching] = useState(false);
     const [counter, setCounter] = useState(25);
 
+    const apiUrl = process.env.REACT_APP_API_URL;
+
+
     useEffect(() => {
         if (!isFetching) { fetchTrendingData() }
         const interval = setInterval(() => {
@@ -24,7 +27,7 @@ function TrendingComponent({ }) {
 
     const fetchTrendingData = async () => {
         try {
-            const res = await fetch('http://localhost:3001/word/trending');
+            const res = await fetch(`${apiUrl}/word/trending`);
             if (!res.ok) {
                 console.log(res.errorCode);
             } else {

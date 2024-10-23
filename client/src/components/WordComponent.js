@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 function WordComponent({ data }) {
     return (
         <div className='word-container'>

@@ -13,10 +13,13 @@ function App() {
   const [searchData, updateSearchData] = useState('')
   const [isDisabled, setIsDisabled] = useState(false)
   const [isError, setError] = useState(false)
+
+  const apiUrl = process.env.REACT_APP_API_URL;
+  
   async function searchWord(keyword) {
     try {
       setIsDisabled(true)
-      const result = await fetch(`http://localhost:3001/word?q=${keyword}`)
+      const result = await fetch(`${apiUrl}/word?q=${keyword}`)
       if (!result.ok) {
         throw new Error('Error')
       } else {
