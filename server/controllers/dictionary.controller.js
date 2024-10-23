@@ -5,9 +5,9 @@ import Trending from "../models/trending.model.js"
 const dictionaryController = {
     search: async (req, res) => {
         try {
-            const keyword = req.params.keyword
-            // const data = await Dictionary.find({ word: { $regex: `^${keyword}`, $options: 'i' } })
-            const data = await Dictionary.find({ word: { $regex: `^${keyword}$`, $options: 'i' } })
+            const q = req.query.q
+            // const data = await Dictionary.find({ word: { $regex: `^${q}`, $options: 'i' } })
+            const data = await Dictionary.find({ word: { $regex: `^${q}$`, $options: 'i' } })
             if (!data) {
                 return res.status(400).json({ msg: 'Not found' })
             }

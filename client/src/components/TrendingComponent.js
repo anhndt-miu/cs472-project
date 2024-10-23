@@ -3,17 +3,17 @@ import { useEffect, useState } from 'react'
 function TrendingComponent({ }) {
 
     const [data, setData] = useState(null);
+    const [isFetching, setFetching] = useState(false);
     const [counter, setCounter] = useState(25);
-    // const [triggerFetchData, setTriggerFetchData] = useState(0);
 
     useEffect(() => {
-        fetchTrendingData()
+        if (!isFetching) { fetchTrendingData() }
         const interval = setInterval(() => {
             setCounter((prevCounter) => {
                 if (prevCounter > 0) {
                     return prevCounter - 1
                 } else {
-                    fetchTrendingData()
+                    if (!isFetching) { fetchTrendingData() }
                     return prevCounter = 25
                 }
             });
@@ -22,13 +22,9 @@ function TrendingComponent({ }) {
         return () => clearInterval(interval);
     }, []);
 
-    // useEffect(() => {
-    //     fetchTrendingData();
-    // }, [triggerFetchData]);
-
     const fetchTrendingData = async () => {
         try {
-            const res = await fetch('http://localhost:3001/trending');
+            const res = await fetch('http://localhost:3001/word/trending');
             if (!res.ok) {
                 console.log(res.errorCode);
             } else {
@@ -37,6 +33,9 @@ function TrendingComponent({ }) {
             }
         } catch (error) {
             console.error('Error fetching counter:', error);
+        } finally {
+            console.log('Fetched');
+            setFetching(false)
         }
     };
 
@@ -44,7 +43,7 @@ function TrendingComponent({ }) {
     return (
         <div className='trending-container'>
             <h1>Popular searches</h1>
-            <p className='trending-hint'>Auto refresh after {counter} second(s)</p>
+            <p className='trending-hint'>Refresh after {counter}</p>
             {(!data || data.length === 0) ? null : (
                 <div >
                     <table>
@@ -58,7 +57,7 @@ function TrendingComponent({ }) {
                         <tbody>
                             {
                                 data.map((item, index) => (
-                                    <tr key={item.id}>
+                                    <tr key={index}>
                                         <td>{index + 1}</td>
                                         <td>{item.word}</td>
                                         <td>{item.counter}</td>

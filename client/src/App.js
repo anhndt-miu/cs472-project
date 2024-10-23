@@ -1,26 +1,31 @@
 
 import './App.css';
+import { useState } from 'react';
+
 import TrendingComponent from './components/TrendingComponent.js'
 import SearchComponent from './components/SearchComponent.js'
 import SearchResultComponent from './components/SearchResultComponent.js'
-import { useState } from 'react';
+
 import FooterComponent from './components/FooterComponent.js';
+import HintComponent from './components/HintComponent.js';
 
 function App() {
-  const [searchData, updateSearchData] = useState(null)
+  const [searchData, updateSearchData] = useState('')
   const [isDisabled, setIsDisabled] = useState(false)
+  const [isError, setError] = useState(false)
   async function searchWord(keyword) {
     try {
       setIsDisabled(true)
-      const result = await fetch(`http://localhost:3001/search/${keyword}`)
+      const result = await fetch(`http://localhost:3001/word?q=${keyword}`)
       if (!result.ok) {
         throw new Error('Error')
       } else {
-        const searchData  = await result.json()
+        const searchData = await result.json()
+        setError(false)
         updateSearchData(searchData)
       }
     } catch (error) {
-      alert(error)
+      setError(true)
     } finally { setIsDisabled(false) }
   }
 
@@ -32,10 +37,10 @@ function App() {
     <div className="app">
       <SearchComponent isDisabled={isDisabled} handleSearch={handleSearch} />
       <div className='content-container'>
-        <div className='column-left'><SearchResultComponent data={searchData} /></div>
+        <div className='column-left'> {(isError) ? <HintComponent message='Something went wrong!' /> : <SearchResultComponent data={searchData} />}</div>
         <div className='column-right'><TrendingComponent /></div>
       </div>
-      <FooterComponent/>
+      <FooterComponent />
     </div>
   );
 }

@@ -19,8 +19,8 @@ app.use(express.json())
 connectDB();
 
 // Router
-app.use('/search', dictionaryRouter)
-app.use('/trending', trendingRouter)
+app.use('/word', dictionaryRouter)
+app.use('/word/trending', trendingRouter)
 
 // Handle not found
 app.use((req, res, next) => {

@@ -7,10 +7,10 @@ function FooterComponent() {
                 <label>1000 N 4th Street, Fairfield, Iowa - 52557</label><br />
             </div>
             <div className="footer-right">
-                <a href="#">  <span class="material-symbols-outlined">mail</span></a>
-                <a href="#">  <span class="material-symbols-outlined">public</span></a>
-                <a href="#">  <span class="material-symbols-outlined">compost</span></a>
-                <a href="#">  <span class="material-symbols-outlined">eco</span></a>
+                <a >  <span className="material-symbols-outlined">mail</span></a>
+                <a >  <span className="material-symbols-outlined">public</span></a>
+                <a >  <span className="material-symbols-outlined">compost</span></a>
+                <a>  <span className="material-symbols-outlined">eco</span></a>
             </div>
         </div>
     )

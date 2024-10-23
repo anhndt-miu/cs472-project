@@ -3,7 +3,7 @@ import express from 'express'
 
 const router = express.Router()
 
-router.route('/:keyword')
+router.route('/')
     .get(dictionaryController.search)
 
 export default router
