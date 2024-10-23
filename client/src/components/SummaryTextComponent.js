@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function TextToSpeedComponent({ word }) {
+function SummaryTextComponent({ word }) {
     const [data, setData] = useState('')
     const [loading, setLoading] = useState(true);
     const gemini_url = process.env.REACT_APP_GEMINI_API_URL;
@@ -64,4 +64,4 @@ function TextToSpeedComponent({ word }) {
     )
 }
 
-export default TextToSpeedComponent
+export default SummaryTextComponent
