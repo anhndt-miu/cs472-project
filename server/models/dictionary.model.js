@@ -1,8 +1,16 @@
 import mongoose from 'mongoose'
+import dotenv from 'dotenv'
 
-mongoose.connect('mongodb://localhost:27017/crud')
+dotenv.config();
 
-const  dictionarySchema = new mongoose.Schema({
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+    .then(() => console.log('Connected to MongoDB!'))
+    .catch((err) => console.error('Failed to connect to MongoDB', err));
+
+const dictionarySchema = new mongoose.Schema({
     word: { type: String, required: true },
     wordtype: { type: String, required: true },
     definition: { type: String, required: true }

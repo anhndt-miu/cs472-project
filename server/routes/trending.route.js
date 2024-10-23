@@ -4,6 +4,6 @@ import express from 'express'
 const router = express.Router()
 
 router.route('/')
-    .get(trendingController.search)
+    .get(trendingController.getTrending)
 
 export default router
