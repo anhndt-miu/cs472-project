@@ -1,7 +1,7 @@
 function WordComponent({ data }) {
     return (
         <div className='word-container'>
-            <p className="word-title">{`${data.word} | ${data.wordtype}`} </p>
+            <div><a className="word-title">{data.word}</a> <a className="word-type">{` (${data.wordtype})`}</a></div> 
             <p className="word-desc">{data.definition} </p>
             <hr className="word-separator" />
             <br />

@@ -126,6 +126,12 @@ body {
   font-weight: bold;
 }
 
+.word-type{
+  font-size: 16px;
+  font-weight: 500;
+  color: #727272;
+}
+
 .word-separator {
   border-top: 1px dashed #7a7a7a;
 }
