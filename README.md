@@ -34,6 +34,7 @@ Click [Link](https://zealous-hill-0b8fac610.5.azurestaticapps.net/) to see onlin
 Click this [link](https://wap-1-cgdbeuhhdndge9f9.centralus-01.azurewebsites.net/api-docs/) to see API document
 
 ## Project structure
+```
 .
 ├── client                      # Client folder
 │   ├── src                     # Source code
@@ -58,3 +59,4 @@ Click this [link](https://wap-1-cgdbeuhhdndge9f9.centralus-01.azurewebsites.net/
 │   ├── ...                     # etc
 ├── ...                         # etc
 └── README.md
+```
