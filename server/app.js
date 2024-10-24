@@ -27,8 +27,7 @@ app.use('/word', dictionaryRouter)
 app.use('/word/trending', trendingRouter)
 
 // Swagger
-const swaggerOptions = {
-    swaggerDefinition: {
+const swaggerDefinition = {
       openapi: '3.0.0',
       info: {
         title: 'Dictionary API',
@@ -37,18 +36,23 @@ const swaggerOptions = {
       },
       servers: [
         {
-          url: 'https://wap-1-cgdbeuhhdndge9f9.centralus-01.azurewebsites.net'
+          url: 'https://wap-1-cgdbeuhhdndge9f9.centralus-01.azurewebsites.net',
+          description: 'Development server',
         }
       ]
-    },
-    apis: ['./routes/*.route.js'], 
-  };
+    };
+
+  // Options for the swagger docs
+const options = {
+  swaggerDefinition,
+  apis: ['./routes/*.js'], // Path to the API docs
+};
 
   // Initialize swagger-jsdoc
-const swaggerDocs = swaggerJsDoc(swaggerOptions);
+const swaggerSpec = swaggerJsDoc(options);
 
 // Serve Swagger UI
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 
 // Handle not found

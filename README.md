@@ -25,7 +25,7 @@ Click [Link](https://zealous-hill-0b8fac610.5.azurestaticapps.net/) to see onlin
  ```
 
 ## Swagger 
-Click this [link]() to see API document
+Click this [link](https://wap-1-cgdbeuhhdndge9f9.centralus-01.azurewebsites.net/api-docs/) to see API document
 
 ## Project structure
 .
