@@ -42,18 +42,17 @@ const swaggerDefinition = {
       ]
     };
 
-  // Options for the swagger docs
+// Options for the swagger docs
 const options = {
   swaggerDefinition,
-  apis: ['./routes/*.js'], // Path to the API docs
+  apis: ['./routes/*.js'], 
 };
 
-  // Initialize swagger-jsdoc
+// Initialize swagger-jsdoc
 const swaggerSpec = swaggerJsDoc(options);
 
 // Serve Swagger UI
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
 
 // Handle not found
 app.use((req, res, next) => {
