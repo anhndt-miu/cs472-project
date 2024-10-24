@@ -5,7 +5,7 @@
       "title": "Dictionary API",
       "description": "API Documentation for Dictionary Project"
     },
-    "host": "https://wap-1-cgdbeuhhdndge9f9.centralus-01.azurewebsites.net/",
+    "host": "wap-1-cgdbeuhhdndge9f9.centralus-01.azurewebsites.net",
     "basePath": "/",
     "schemes": ["https", "http"],
     "paths": {
@@ -19,7 +19,18 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/definitions/word"
+                  "$ref": "#/definitions/Word"
+                }
+              }
+            },
+            "400": {
+              "description": "Word not found",
+              "schema": {
+                "type": "object",
+                "items": {
+                  "message": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -36,7 +47,17 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/definitions/word/trending"
+                  "$ref": "#/definitions/TrendingWord"
+                }
+              }
+            },"400": {
+              "description": "Word not found",
+              "schema": {
+                "type": "object",
+                "items": {
+                  "message": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -71,7 +92,7 @@
           "definition": {
             "type": "string"
           },"counter": {
-            "type": "Number"
+            "type": "number"
           }
         }
       }

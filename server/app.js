@@ -37,7 +37,7 @@ const swaggerOptions = {
       },
       servers: [
         {
-          url: 'https://wap-1-cgdbeuhhdndge9f9.centralus-01.azurewebsites.net/'
+          url: 'https://wap-1-cgdbeuhhdndge9f9.centralus-01.azurewebsites.net'
         }
       ]
     },
