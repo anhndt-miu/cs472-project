@@ -31,17 +31,17 @@ const swaggerOptions = {
     swaggerDefinition: {
       openapi: '3.0.0',
       info: {
-        title: 'Node API',
+        title: 'Dictionary API',
         version: '1.0.0',
-        description: 'API Documentation for Node.js Project'
+        description: 'API Documentation for Dictionary Project'
       },
       servers: [
         {
-          url: 'http://localhost:3001'
+          url: 'https://wap-1-cgdbeuhhdndge9f9.centralus-01.azurewebsites.net/'
         }
       ]
     },
-    apis: ['./routes/*.js'], // Path to your API documentation
+    apis: ['./routes/*.route.js'], 
   };
 
   // Initialize swagger-jsdoc

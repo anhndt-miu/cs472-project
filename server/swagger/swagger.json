@@ -5,9 +5,9 @@
       "title": "Dictionary API",
       "description": "API Documentation for Dictionary Project"
     },
-    "host": "localhost:3001",
+    "host": "https://wap-1-cgdbeuhhdndge9f9.centralus-01.azurewebsites.net/",
     "basePath": "/",
-    "schemes": ["http"],
+    "schemes": ["https", "http"],
     "paths": {
       "/word": {
         "get": {
