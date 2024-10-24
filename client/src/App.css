@@ -23,8 +23,16 @@ body {
   border: 1px solid #cccccc8d;
   border-radius: 30px;
   padding: 12px 30px;
-  width: 400px;
+  width: 380px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 500px) {
+  .trending-box {
+    width: 80%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 }
 
 .search-box {
