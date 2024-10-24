@@ -1,38 +1,49 @@
-import { useState, useEffect } from "react";
-import { fetchTTS } from "../services/ttsService.js";
+import { useState } from "react";
 
 function TtsComponent({ word }) {
     const [message, setMessage] = useState('');
-    const [audioSrc, setAudioSrc] = useState(null);
-    const [loading, setLoading] = useState(true);
-    async function fetchAudio() {
-        try {
-            const ttsAudio = await fetchTTS(word)
-            if (ttsAudio) {
-                const audioUrl = `data:audio/mp3;base64,${ttsAudio}`;
-                setAudioSrc(audioUrl);
-            }
-        } catch (error) {
-            console.error(error.message)
-            setMessage(error.message)
-        } finally { setLoading(false) }
+    const [isSpeaking, setIsSpeaking] = useState(false);
+
+    const handleSpeak = () => {
+        if ('speechSynthesis' in window) {
+            const utterance = new SpeechSynthesisUtterance(word);
+
+            utterance.lang = 'en-US';
+            utterance.pitch = 1;
+            utterance.rate = 1;
+            utterance.volume = 1;
+
+            window.speechSynthesis.speak(utterance);
+
+            utterance.onstart = () => setIsSpeaking(true);;
+            utterance.onend = () => setIsSpeaking(false);;
+            utterance.onerror = (event) => {
+                setIsSpeaking(false);
+                console.error('Speech error:', event.error)
+            };
+        } else {
+            setMessage('Sorry, your browser does not support text-to-speech!');
+        }
     }
 
-    useEffect(() => {
-        fetchAudio()
-    }, [word])
-
     return (
-        <div className="text-to-speed-container">
-            <p className="explain-text">{loading}</p>
+        <div className="tts-container">
             <p className="explain-text">{message}</p>
-            {audioSrc && (
-                <div>
-                    <p>Listen to the response:</p>
-                    <audio controls src={audioSrc}></audio>
-                </div>
-            )}
+            <div className="tts-button-contianer">
+                <button
+                    className="tts-play-button"
+                    onClick={handleSpeak}
+                    disabled={isSpeaking}
+                >
+                    <div className="tts-play-icon-button">{isSpeaking ? <a className="material-symbols-outlined">pause_circle</a> : <a className="material-symbols-outlined"> play_arrow</a>}</div>
+                    <p className="tts-play-text">{isSpeaking ? 'Speaking...' : 'Play Audio'}</p>
+                </button>
+
+            </div>
+            
+            <hr className="tts-divider"/>
         </div>
+
     )
 }
 
