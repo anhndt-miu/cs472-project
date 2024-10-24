@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(process.env.APPSETTING_AZURE_COSMOS_CONNECTIONSTRING, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
@@ -15,5 +15,6 @@ const dictionarySchema = new mongoose.Schema({
     counter: { type: Number, default: 0 }
 }, { timestamps: true });
 
+dictionarySchema.index({ counter: -1, updatedAt: -1, createdAt: -1 });
 
 export default mongoose.model('trending', dictionarySchema)
