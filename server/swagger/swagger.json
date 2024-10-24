@@ -1,0 +1,80 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Dictionary API",
+      "description": "API Documentation for Dictionary Project"
+    },
+    "host": "localhost:3001",
+    "basePath": "/",
+    "schemes": ["http"],
+    "paths": {
+      "/word": {
+        "get": {
+          "summary": "Search word",
+          "description": "Returns a list of all word match with query",
+          "responses": {
+            "200": {
+              "description": "A list of word",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/word"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/word/trending": {
+        "get": {
+          "summary": "Get top words order by times to search",
+          "description": "Returns a list of trending words",
+          "responses": {
+            "200": {
+              "description": "A list of words",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/word/trending"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Word": {
+        "type": "object",
+        "properties": {
+          "word": {
+            "type": "string"
+          },
+          "wordtype": {
+            "type": "string"
+          },
+          "definition": {
+            "type": "string"
+          }
+        }
+      },
+      "TrendingWord": {
+        "type": "object",
+        "properties": {
+          "word": {
+            "type": "string"
+          },
+          "wordtype": {
+            "type": "string"
+          },
+          "definition": {
+            "type": "string"
+          },"counter": {
+            "type": "Number"
+          }
+        }
+      }
+    }
+  }
+  

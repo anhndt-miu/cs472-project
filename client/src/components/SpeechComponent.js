@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function TtsComponent({ word }) {
+function SpeechComponent({ word }) {
     const [message, setMessage] = useState('');
     const [isSpeaking, setIsSpeaking] = useState(false);
 
@@ -47,4 +47,4 @@ function TtsComponent({ word }) {
     )
 }
 
-export default TtsComponent
+export default SpeechComponent

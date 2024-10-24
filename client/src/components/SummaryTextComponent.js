@@ -9,7 +9,7 @@ function SummaryTextComponent({ word }) {
     async function searchWord() {
         try {
             const prompt = `Meaning of ${word} in english with 100 words. Response with html format`
-            console.log(prompt)
+            // console.log(prompt)
             console.log(`${gemini_url} ${gemini_key}`)
             const requestBody = {
                 contents: [
@@ -58,7 +58,7 @@ function SummaryTextComponent({ word }) {
 
     return (
         <div className="text-to-speed-container">
-            <p className="explain-text">{loading}</p>
+            <p className="explain-text">{loading ? '...' : ''}</p>
             <div dangerouslySetInnerHTML={{ __html: data }} />
         </div>
     )

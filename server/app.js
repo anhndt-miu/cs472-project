@@ -1,6 +1,10 @@
-import dotenv from 'dotenv';
+import dotenv from 'dotenv'
 import express from 'express'
+import swaggerUi from 'swagger-ui-express'
+import swaggerJsDoc from 'swagger-jsdoc';
+
 import cors from 'cors'
+
 import connectDB from './config/db.config.js';  
 import dictionaryRouter from './routes/dictionary.route.js';
 import trendingRouter from './routes/trending.route.js'
@@ -21,6 +25,31 @@ connectDB();
 // Router
 app.use('/word', dictionaryRouter)
 app.use('/word/trending', trendingRouter)
+
+// Swagger
+const swaggerOptions = {
+    swaggerDefinition: {
+      openapi: '3.0.0',
+      info: {
+        title: 'Node API',
+        version: '1.0.0',
+        description: 'API Documentation for Node.js Project'
+      },
+      servers: [
+        {
+          url: 'http://localhost:3001'
+        }
+      ]
+    },
+    apis: ['./routes/*.js'], // Path to your API documentation
+  };
+
+  // Initialize swagger-jsdoc
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+
+// Serve Swagger UI
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
 
 // Handle not found
 app.use((req, res, next) => {
