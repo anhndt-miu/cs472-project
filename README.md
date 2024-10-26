@@ -11,8 +11,8 @@ Click [Link](https://zealous-hill-0b8fac610.5.azurestaticapps.net/) to see onlin
 ## Short video to show product overview
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/6tzJNWa9NuE/0.jpg)](https://www.youtube.com/watch?v=6tzJNWa9NuE)
 
-## Short video to show product overview
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/6tzJNWa9NuE/0.jpg)](https://www.youtube.com/watch?v=KPW8wjeyIvE)
+## Video explaining verbally the tasks
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/KPW8wjeyIvE/0.jpg)](https://www.youtube.com/watch?v=KPW8wjeyIvE)
 
 ## Installation
 
